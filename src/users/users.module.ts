@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { JwtStrategy } from '../users/jwt.strategy';
 import { UserRepository } from './repositories/user.repository';
-import { UserMutationResolver, UserQueryResolver } from './users.resolver';
+import { UserMutationResolver } from './users.resolver';
 import { UsersService } from './users.service';
 
 @Module({
@@ -23,7 +23,7 @@ import { UsersService } from './users.service';
       }
     })
   ],
-  providers: [UserMutationResolver, UserQueryResolver, UsersService, JwtStrategy],
+  providers: [UserMutationResolver, UsersService, JwtStrategy],
   exports: [JwtStrategy, PassportModule]
 })
 export class UsersModule {}
