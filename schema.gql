@@ -46,22 +46,31 @@ input UpdateUserInput {
   id: Int!
 }
 
-type UserQuery {
-  findAll: [User!]!
-  findOne(id: Int!): User!
+type Book {
+  id: String!
+  title: String!
+  description: String!
 }
 
 type Query {
-  user: UserQuery!
+  books1: [Book!]!
+  book(id: String!): Book!
   posts: [Post!]!
   post(id: Int!): Post!
 }
 
 type Mutation {
   user: UserMutation!
+  createBook1(createBookInput: CreateBookInput!): Book!
+  removeBook(id: String!): Book!
   createPost(createPostInput: CreatePostInput!): Post!
   updatePost(updatePostInput: UpdatePostInput!): Post!
   removePost(id: Int!): Post!
+}
+
+input CreateBookInput {
+  title: String!
+  description: String!
 }
 
 input CreatePostInput {
